@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище CursovayaBaseModelContainer" CdmEntityContainer="CursovayaBaseEntities">
+    <EntitySetMapping Name="Заказ">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Заказ">
+        <MappingFragment StoreEntitySet="Заказ">
+          <ScalarProperty Name="Код_заказа" ColumnName="Код_заказа" />
+          <ScalarProperty Name="Код_товара" ColumnName="Код_товара" />
+          <ScalarProperty Name="Код_категории" ColumnName="Код_категории" />
+          <ScalarProperty Name="Дата_заказа" ColumnName="Дата_заказа" />
+          <ScalarProperty Name="Дата_продажи" ColumnName="Дата_продажи" />
+          <ScalarProperty Name="Код_оплаты" ColumnName="Код_оплаты" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+          <ScalarProperty Name="Цена_ед_товара" ColumnName="Цена_ед_товара" />
+          <ScalarProperty Name="Сумма_заказа" ColumnName="Сумма_заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Категория">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Категория">
+        <MappingFragment StoreEntitySet="Категория">
+          <ScalarProperty Name="Код_категории" ColumnName="Код_категории" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Оплата">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Оплата">
+        <MappingFragment StoreEntitySet="Оплата">
+          <ScalarProperty Name="КодОплаты" ColumnName="КодОплаты" />
+          <ScalarProperty Name="ТипОплаты" ColumnName="ТипОплаты" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Пользователь">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Пользователь">
+        <MappingFragment StoreEntitySet="Пользователь">
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Разрешение">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Разрешение">
+        <MappingFragment StoreEntitySet="Разрешение">
+          <ScalarProperty Name="Код_разрешения" ColumnName="Код_разрешения" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Товар">
+      <EntityTypeMapping TypeName="CursovayaBaseModel.Товар">
+        <MappingFragment StoreEntitySet="Товар">
+          <ScalarProperty Name="Код_товара" ColumnName="Код_товара" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Код_категории" ColumnName="Код_категории" />
+          <ScalarProperty Name="Код_разрешения" ColumnName="Код_разрешения" />
+          <ScalarProperty Name="Норма_расхода" ColumnName="Норма_расхода" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

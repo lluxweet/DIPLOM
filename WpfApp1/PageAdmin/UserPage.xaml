@@ -1,0 +1,81 @@
+﻿<Page x:Class="WpfApp1.PageAdmin.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.PageAdmin" xmlns:Controls="clr-namespace:WpfApp1.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>            
+            <RowDefinition Height="450"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="{StaticResource Color}">
+
+            <StackPanel Orientation="Horizontal" Height="45" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <TextBlock x:Name="TxbNaideno" Width="45" Style="{StaticResource normText}" Margin="0 10"/>
+                <TextBlock Text="/" Style="{StaticResource normText}" Margin="0 10"/>
+                <TextBlock x:Name="TxbVsego" Width="50" Style="{StaticResource normText}" Margin="0 10"/>
+
+                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png"/>
+
+                <Button Width="30" Height="30" Margin="10 0" HorizontalAlignment="Right" Background="White" x:Name="AddButton" Click="AddButton_Click">
+                    <Image Source="/images/dobav.png" Width="20" Height="30" Opacity="0.5"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Background="{StaticResource ColorWhite}">
+            <DataGrid Margin="0 30" x:Name="GridUser" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single" Style="{StaticResource text}" IsReadOnly="True">
+              <DataGrid.Columns>
+                    <DataGridTextColumn
+                Binding ="{Binding Role.NameRole}"                        
+                Header ="Роль"/>
+                    <DataGridTextColumn
+                Binding ="{Binding Familia}"
+                Header ="Фамилия"/>
+                    <DataGridTextColumn
+                Binding ="{Binding Name}"                        
+                Header ="Имя"/>
+                    <DataGridTextColumn
+                Binding ="{Binding Otchestvo}"
+                Header ="Отчество"/>
+                    <DataGridTextColumn
+                Binding ="{Binding Login}"
+                Header ="Логин"/>
+                    <DataGridTextColumn
+                Binding ="{Binding Password}"
+                Header ="Пароль"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button BorderThickness="0" Background="Transparent" x:Name="BtnRedact" Click="BtnRerdact_Click">
+                                    <TextBlock Text="✎" Opacity="0.8" Width="23" x:Name="TextRedact"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button BorderThickness="0" Background="Transparent" x:Name="BtnDelet" Click="BtnDelet_Click" Visibility="{Binding delet}">
+                                    <TextBlock Text="🗑️" Width="23" Opacity="0.8" x:Name="TextDelet"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+               </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

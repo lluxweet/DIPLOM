@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище CursovayaBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Заказ">
+    <Key>
+      <PropertyRef Name="Код_заказа" />
+    </Key>
+    <Property Name="Код_заказа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Код_товара" Type="int" Nullable="false" />
+    <Property Name="Код_категории" Type="int" Nullable="false" />
+    <Property Name="Дата_заказа" Type="date" Nullable="false" />
+    <Property Name="Дата_продажи" Type="date" Nullable="false" />
+    <Property Name="Код_оплаты" Type="int" Nullable="false" />
+    <Property Name="Количество" Type="int" Nullable="false" />
+    <Property Name="Цена_ед_товара" Type="int" Nullable="false" />
+    <Property Name="Сумма_заказа" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Категория">
+    <Key>
+      <PropertyRef Name="Код_категории" />
+    </Key>
+    <Property Name="Код_категории" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Оплата">
+    <Key>
+      <PropertyRef Name="КодОплаты" />
+    </Key>
+    <Property Name="КодОплаты" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ТипОплаты" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Пользователь">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Логин" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Разрешение">
+    <Key>
+      <PropertyRef Name="Код_разрешения" />
+    </Key>
+    <Property Name="Код_разрешения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Товар">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+    </Key>
+    <Property Name="Код_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Код_категории" Type="int" Nullable="false" />
+    <Property Name="Код_разрешения" Type="int" Nullable="false" />
+    <Property Name="Норма_расхода" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="Цена" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Заказ_Категория">
+    <End Role="Категория" Type="Self.Категория" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Категория">
+        <PropertyRef Name="Код_категории" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_категории" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Оплата">
+    <End Role="Оплата" Type="Self.Оплата" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Оплата">
+        <PropertyRef Name="КодОплаты" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_оплаты" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Товар">
+    <End Role="Товар" Type="Self.Товар" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Товар">
+        <PropertyRef Name="Код_товара" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_товара" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Товар_Категория">
+    <End Role="Категория" Type="Self.Категория" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Товар" Type="Self.Товар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Категория">
+        <PropertyRef Name="Код_категории" />
+      </Principal>
+      <Dependent Role="Товар">
+        <PropertyRef Name="Код_категории" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Товар_Разрешение">
+    <End Role="Разрешение" Type="Self.Разрешение" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Товар" Type="Self.Товар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Разрешение">
+        <PropertyRef Name="Код_разрешения" />
+      </Principal>
+      <Dependent Role="Товар">
+        <PropertyRef Name="Код_разрешения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище CursovayaBaseModelContainer">
+    <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Категория" EntityType="Self.Категория" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Оплата" EntityType="Self.Оплата" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Пользователь" EntityType="Self.Пользователь" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Разрешение" EntityType="Self.Разрешение" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Товар" EntityType="Self.Товар" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Заказ_Категория" Association="Self.FK_Заказ_Категория">
+      <End Role="Категория" EntitySet="Категория" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Оплата" Association="Self.FK_Заказ_Оплата">
+      <End Role="Оплата" EntitySet="Оплата" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Товар" Association="Self.FK_Заказ_Товар">
+      <End Role="Товар" EntitySet="Товар" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Товар_Категория" Association="Self.FK_Товар_Категория">
+      <End Role="Категория" EntitySet="Категория" />
+      <End Role="Товар" EntitySet="Товар" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Товар_Разрешение" Association="Self.FK_Товар_Разрешение">
+      <End Role="Разрешение" EntitySet="Разрешение" />
+      <End Role="Товар" EntitySet="Товар" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

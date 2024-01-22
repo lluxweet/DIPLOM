@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CursovayaBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Заказ">
+    <Key>
+      <PropertyRef Name="Код_заказа" />
+    </Key>
+    <Property Name="Код_заказа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_товара" Type="Int32" Nullable="false" />
+    <Property Name="Код_категории" Type="Int32" Nullable="false" />
+    <Property Name="Дата_заказа" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Дата_продажи" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Код_оплаты" Type="Int32" Nullable="false" />
+    <Property Name="Количество" Type="Int32" Nullable="false" />
+    <Property Name="Цена_ед_товара" Type="Int32" Nullable="false" />
+    <Property Name="Сумма_заказа" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Категория" Relationship="Self.FK_Заказ_Категория" FromRole="Заказ" ToRole="Категория" />
+    <NavigationProperty Name="Оплата" Relationship="Self.FK_Заказ_Оплата" FromRole="Заказ" ToRole="Оплата" />
+    <NavigationProperty Name="Товар" Relationship="Self.FK_Заказ_Товар" FromRole="Заказ" ToRole="Товар" />
+  </EntityType>
+  <EntityType Name="Категория">
+    <Key>
+      <PropertyRef Name="Код_категории" />
+    </Key>
+    <Property Name="Код_категории" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Категория" FromRole="Категория" ToRole="Заказ" />
+    <NavigationProperty Name="Товар" Relationship="Self.FK_Товар_Категория" FromRole="Категория" ToRole="Товар" />
+  </EntityType>
+  <EntityType Name="Оплата">
+    <Key>
+      <PropertyRef Name="КодОплаты" />
+    </Key>
+    <Property Name="КодОплаты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ТипОплаты" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Оплата" FromRole="Оплата" ToRole="Заказ" />
+  </EntityType>
+  <EntityType Name="Пользователь">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Разрешение">
+    <Key>
+      <PropertyRef Name="Код_разрешения" />
+    </Key>
+    <Property Name="Код_разрешения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Товар" Relationship="Self.FK_Товар_Разрешение" FromRole="Разрешение" ToRole="Товар" />
+  </EntityType>
+  <EntityType Name="Товар">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+    </Key>
+    <Property Name="Код_товара" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Код_категории" Type="Int32" Nullable="false" />
+    <Property Name="Код_разрешения" Type="Int32" Nullable="false" />
+    <Property Name="Норма_расхода" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Цена" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Товар" FromRole="Товар" ToRole="Заказ" />
+    <NavigationProperty Name="Категория" Relationship="Self.FK_Товар_Категория" FromRole="Товар" ToRole="Категория" />
+    <NavigationProperty Name="Разрешение" Relationship="Self.FK_Товар_Разрешение" FromRole="Товар" ToRole="Разрешение" />
+  </EntityType>
+  <Association Name="FK_Заказ_Категория">
+    <End Role="Категория" Type="Self.Категория" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Категория">
+        <PropertyRef Name="Код_категории" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_категории" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Оплата">
+    <End Role="Оплата" Type="Self.Оплата" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Оплата">
+        <PropertyRef Name="КодОплаты" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_оплаты" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Товар">
+    <End Role="Товар" Type="Self.Товар" Multiplicity="1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Товар">
+        <PropertyRef Name="Код_товара" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Код_товара" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Товар_Категория">
+    <End Role="Категория" Type="Self.Категория" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Товар" Type="Self.Товар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Категория">
+        <PropertyRef Name="Код_категории" />
+      </Principal>
+      <Dependent Role="Товар">
+        <PropertyRef Name="Код_категории" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Товар_Разрешение">
+    <End Role="Разрешение" Type="Self.Разрешение" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Товар" Type="Self.Товар" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Разрешение">
+        <PropertyRef Name="Код_разрешения" />
+      </Principal>
+      <Dependent Role="Товар">
+        <PropertyRef Name="Код_разрешения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CursovayaBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+    <EntitySet Name="Категория" EntityType="Self.Категория" />
+    <EntitySet Name="Оплата" EntityType="Self.Оплата" />
+    <EntitySet Name="Пользователь" EntityType="Self.Пользователь" />
+    <EntitySet Name="Разрешение" EntityType="Self.Разрешение" />
+    <EntitySet Name="Товар" EntityType="Self.Товар" />
+    <AssociationSet Name="FK_Заказ_Категория" Association="Self.FK_Заказ_Категория">
+      <End Role="Категория" EntitySet="Категория" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Оплата" Association="Self.FK_Заказ_Оплата">
+      <End Role="Оплата" EntitySet="Оплата" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Товар" Association="Self.FK_Заказ_Товар">
+      <End Role="Товар" EntitySet="Товар" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Товар_Категория" Association="Self.FK_Товар_Категория">
+      <End Role="Категория" EntitySet="Категория" />
+      <End Role="Товар" EntitySet="Товар" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Товар_Разрешение" Association="Self.FK_Товар_Разрешение">
+      <End Role="Разрешение" EntitySet="Разрешение" />
+      <End Role="Товар" EntitySet="Товар" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

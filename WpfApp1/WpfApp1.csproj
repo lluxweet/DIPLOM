@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C90CF0E-963C-4B85-AA0A-0A4890C1493D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfApp1</RootNamespace>
+    <AssemblyName>WpfApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.1.4.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.1.4\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Json.8.0.0\lib\net462\System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="class\ServerConstants.cs" />
+    <Compile Include="Controls\HintTextBox.xaml.cs">
+      <DependentUpon>HintTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IconTextBox.xaml.cs">
+      <DependentUpon>IconTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriaEntity.cs" />
+    <Compile Include="Models\ClientEntity.cs" />
+    <Compile Include="Models\OrganizaciaEntity.cs" />
+    <Compile Include="Models\PredprinimatelEntity.cs" />
+    <Compile Include="Models\ProdajaEntity.cs" />
+    <Compile Include="Models\ProductEntity.cs" />
+    <Compile Include="Models\RazreshenieEntity.cs" />
+    <Compile Include="Models\RoleEntity.cs" />
+    <Compile Include="Models\StatusEntity.cs" />
+    <Compile Include="Models\StatusoplataEntity.cs" />
+    <Compile Include="Models\TypeoplataEntity.cs" />
+    <Compile Include="Models\UserEntity.cs" />
+    <Compile Include="PageAdmin\AddRedClientWindow.xaml.cs">
+      <DependentUpon>AddRedClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin\AddRedUserWindow.xaml.cs">
+      <DependentUpon>AddRedUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin\ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageManager\AddRedProdajaWindow.xaml.cs">
+      <DependentUpon>AddRedProdajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageManager\AddRedProductWindow.xaml.cs">
+      <DependentUpon>AddRedProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageManager\ProductPage.xaml.cs">
+      <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CategoriaRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\OrganizaciaRepository.cs" />
+    <Compile Include="Repositories\PredprinimatelRepository.cs" />
+    <Compile Include="Repositories\ProdajaRepository.cs" />
+    <Compile Include="Repositories\ProductReposirory.cs" />
+    <Compile Include="Repositories\RazreshenieRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\StatusOIplataRepository.cs" />
+    <Compile Include="Repositories\StatusRepository.cs" />
+    <Compile Include="Repositories\TypeOplataRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Page Include="Avtorizacia\PageAvtoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HintTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IconTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Avtorizacia\PageAvtoriz.xaml.cs">
+      <DependentUpon>PageAvtoriz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="class\AppFrame.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PageAdmin\AddRedClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAdmin\AddRedUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAdmin\ClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAdmin\GlavnayaAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAdmin\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManager\AddRedProdajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManager\AddRedProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManager\GlavnayaManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManager\ProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PageAdmin\GlavnayaAdmin.xaml.cs">
+      <DependentUpon>GlavnayaAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageManager\GlavnayaManager.xaml.cs">
+      <DependentUpon>GlavnayaManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\login.png" />
+    <Resource Include="images\password.png" />
+    <Resource Include="images\passwordgray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\facebook.png" />
+    <Resource Include="images\gmail.png" />
+    <Resource Include="images\google.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tovar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\userAdmin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\redact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\zacr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\vixod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\dobav.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\zacaz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\otchet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\DOBAVtovar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\zayavka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

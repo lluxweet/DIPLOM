@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1.PageManager"
+        xmlns:local="clr-namespace:WpfApp1.PageManager" xmlns:control="clr-namespace:WpfApp1.Controls"
         mc:Ignorable="d"
         MinHeight="650"
         MaxHeight="650"
@@ -27,57 +27,40 @@
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <ComboBox x:Name="cmbName" Style="{StaticResource combobox}" SelectedValuePath="id" SelectedValue="{Binding idProduct}" DisplayMemberPath="Name"/>
+                    <ComboBox x:Name="cmbName" Style="{StaticResource combobox}" SelectedValuePath="idProduct" SelectedValue="{Binding idProduct}" DisplayMemberPath="Name"/>
                 </Grid>
-            </Border>
-            <TextBlock Text="Дата продажи:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
-            <Border BorderThickness="2" BorderBrush="#acb0af" CornerRadius="5" Width="390" Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" MinWidth="376"/>
-                        <ColumnDefinition Width="0*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Background="White" CornerRadius="10"/>
-                    <DatePicker SelectedDate="{Binding DataProdaji}" Style="{StaticResource DatePicer}" x:Name="DateProdaja" Margin="0,0,43,0"/>
-                    <Button BorderThickness="0" Background="IndianRed" Foreground="White" x:Name="BtnDelet" HorizontalAlignment="Left" Margin="344,0,0,0" Width="29" FontFamily="Cascadia Code Light">
-                        <TextBlock Text="X" Opacity="0.8" Width="8"/>
-                    </Button>
-                </Grid>
-            </Border>
+            </Border>            
             <TextBlock Text="Клиент:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <ComboBox x:Name="cmbClient" Style="{StaticResource combobox}" SelectedValuePath="id" SelectedValue="{Binding idClient}" DisplayMemberPath="Familia"/>
+                    <ComboBox x:Name="cmbClient" Style="{StaticResource combobox}" SelectedValuePath="idClient" SelectedValue="{Binding idClient}" DisplayMemberPath="Familia"/>
                 </Grid>
             </Border>
             <TextBlock Text="Количество товара:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
-            <Border BorderThickness="2" BorderBrush="#acb0af" CornerRadius="5" Width="390" Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <TextBlock x:Name="textColvo"  Padding="6" VerticalAlignment="Center" Text="Количество" Style="{StaticResource textHint}"/>
-                    <TextBox x:Name="txbColvo" Style="{StaticResource textbox}" Padding="6" Text="{Binding Colichestvo}"/>
-                </Grid>
-            </Border>
+            <control:HintTextBox Hint="Количество товара" x:Name="TxbColichestvo" Text="{Binding Colichestvo}"/>
             <TextBlock Text="Статус оплаты:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <ComboBox x:Name="cmbStatus" Style="{StaticResource combobox}" SelectedValuePath="id" SelectedValue="{Binding idStatusOplata}" DisplayMemberPath="Name"/>
+                    <ComboBox x:Name="cmbStatusOplata" Style="{StaticResource combobox}" SelectedValuePath="idStatus" SelectedValue="{Binding idStatusOplata}" DisplayMemberPath="Name"/>
                 </Grid>
             </Border>
             <TextBlock Text="Тип оплаты:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <ComboBox x:Name="cmbTip" Style="{StaticResource combobox}" SelectedValuePath="id" SelectedValue="{Binding idTipOplata}" DisplayMemberPath="Name"/>
+                    <ComboBox x:Name="cmbTip" Style="{StaticResource combobox}" SelectedValuePath="idTypeOplata" SelectedValue="{Binding idTipOplata}" DisplayMemberPath="Name"/>
+                </Grid>
+            </Border>           
+            <TextBlock Text="Статус заявки:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
+            <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
+                <Grid>
+                    <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
+                    <ComboBox x:Name="cmbStatus" Style="{StaticResource combobox}" SelectedValuePath="idstatus" SelectedValue="{Binding idStatus}" DisplayMemberPath="Name"/>
                 </Grid>
             </Border>
-            <Button Content="Сохранить" Style="{StaticResource mainbutton}" Width="160" x:Name="BtnSave" Margin="0 20">
+            <Button Content="Сохранить" Style="{StaticResource mainbutton}" Width="160" x:Name="BtnSave" Margin="0 20" Click="BtnSave_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>

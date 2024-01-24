@@ -135,6 +135,9 @@
     <Compile Include="PageManager\AddRedProductWindow.xaml.cs">
       <DependentUpon>AddRedProductWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageManager\ProdajaPage.xaml.cs">
+      <DependentUpon>ProdajaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageManager\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
@@ -207,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageManager\GlavnayaManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageManager\ProdajaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

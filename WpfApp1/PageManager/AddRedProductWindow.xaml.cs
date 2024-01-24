@@ -51,7 +51,7 @@ namespace WpfApp1.PageManager
 
             entity.Partia = Convert.ToInt32(TxbPartia.FinderText.Text);
             entity.Name = TxbName.FinderText.Text;
-            entity.Price = Convert.ToDouble(TxbPrice.FinderText.Text);
+            entity.Price = Convert.ToInt32(TxbPrice.FinderText.Text);
 
             entity.Date_delete = DateDelet.SelectedDate;
            

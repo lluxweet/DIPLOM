@@ -1,0 +1,73 @@
+﻿<Page x:Class="WpfApp1.PageManager.ProdajaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.PageManager" xmlns:Controls="clr-namespace:WpfApp1.Controls"
+      mc:Ignorable="d" 
+      Background="{StaticResource ColorWhite}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProdajaPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Background="{StaticResource Color}">
+            <StackPanel Orientation="Horizontal" Height="45" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <TextBlock x:Name="TxbNaideno" Width="45" Style="{StaticResource normText}" Margin="0 10"/>
+                <TextBlock Text="/" Style="{StaticResource normText}" Margin="0 10"/>
+                <TextBlock x:Name="TxbVsego" Width="50" Style="{StaticResource normText}" Margin="0 10"/>
+
+                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png" ChangedEvent="txbPoisk_ChangedEvent" x:Name="txbPoisk"/>
+
+                <Button Height="35" Width="35" Margin="20 0" Background="White" x:Name="BtnAdd" Click="BtnAdd_Click">
+                    <Image Source="/images/zayavka.png" Width="20" Height="30" Opacity="0.5"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>       
+            <DataGrid Style="{StaticResource text}" x:Name="GridProdaja" Margin="0 30" Grid.Row="1" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                        Binding="{Binding Product.Name}"
+                        Header="Наименование"/>                    
+                    <DataGridTextColumn 
+                        Binding="{Binding Client.Familia}"
+                        Header="Клиент"/>
+                    <DataGridTextColumn 
+                        Binding="{Binding Colichestvo}"
+                        Header="Количество"/>
+                    <DataGridTextColumn 
+                        Binding="{Binding StatusOplata.Name}"
+                        Header="Статус оплаты"/>
+                    <DataGridTextColumn 
+                        Binding="{Binding Typeoplata.Name}"
+                        Header="Тип оплаты"/>
+                    <DataGridTextColumn 
+                        Binding="{Binding Stoimost, StringFormat={}{0:C2}}"
+                        Header="Стоимость"/>
+                    <DataGridTextColumn
+                        Binding="{Binding Status.Name}"
+                        Header="Статус"/>
+                    <DataGridTemplateColumn Width="30">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button BorderThickness="0" Background="Transparent" x:Name="BtnRerdact" Click="BtnRerdact_Click">
+                                    <TextBlock Text="✎" Opacity="0.8" Width="23"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>      
+    </Grid>
+</Page>

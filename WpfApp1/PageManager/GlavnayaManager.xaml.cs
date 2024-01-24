@@ -38,5 +38,10 @@ namespace WpfApp1.PageManager
         {
             FrmMain.Navigate(new ProductPage());
         }
+
+        private void BtnProdaja_Click(object sender, RoutedEventArgs e)
+        {
+            FrmMain.Navigate(new ProdajaPage());
+        }
     }
 }

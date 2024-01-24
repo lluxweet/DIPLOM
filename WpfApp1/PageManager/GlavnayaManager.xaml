@@ -25,7 +25,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Content="Заявки" Style="{StaticResource navigation}" Height="31">
+            <Button Content="Продажи" Style="{StaticResource navigation}" Height="31" x:Name="BtnProdaja" Click="BtnProdaja_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

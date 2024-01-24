@@ -72,7 +72,7 @@ namespace WpfApp1.PageManager
        
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddRedProductWindow add = new AddRedProductWindow(null);
+            AddRedProductWindow add = new AddRedProductWindow();
             add.IsVisibleChanged += Add_IsVisibleChanged;
             add.Show();
         }

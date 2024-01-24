@@ -14,7 +14,7 @@ namespace WpfApp1.Models
         public int idClient { get; set; }
         public int Colichestvo { get; set; }
         public int idStatus { get; set; }
-        public int idStatusOplata { get; set; }
+        public int idStatusOplata { get; set; } 
         public int idTipOplata { get; set; }
 
         [JsonIgnore]
@@ -23,5 +23,8 @@ namespace WpfApp1.Models
         public StatusEntity Status { get; set; }
         public TypeoplataEntity Typeoplata { get; set; }
         public StatusoplataEntity StatusOplata { get; set; }
+
+       
+        public int Stoimost => Convert.ToInt32(Product?.Price) * Convert.ToInt32(Colichestvo);
     }
 }

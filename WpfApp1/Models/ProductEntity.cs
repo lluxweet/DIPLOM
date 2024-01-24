@@ -14,7 +14,7 @@ namespace WpfApp1.Models
         public string Name { get; set; }
         public int idСategory { get; set; }
         public int idRazreshenie { get; set; }        
-        public double Price { get; set; }
+        public int Price { get; set; }
         public DateTime? Date_delete { get; set; }
         [JsonIgnore]
         public CategoriaEntity Categoria { get; set; }

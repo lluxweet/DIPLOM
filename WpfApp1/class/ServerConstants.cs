@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    internal class ServerConstants
+    public class ServerConstants
     {
         public const string Host = "https://localhost:5001";
     }

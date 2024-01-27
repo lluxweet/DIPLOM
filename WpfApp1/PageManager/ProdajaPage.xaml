@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
 
@@ -25,6 +26,8 @@
 
                 <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png" ChangedEvent="txbPoisk_ChangedEvent" x:Name="txbPoisk"/>
 
+                
+                   
                 <Button Height="35" Width="35" Margin="20 0" Background="White" x:Name="BtnAdd" Click="BtnAdd_Click">
                     <Image Source="/images/zayavka.png" Width="20" Height="30" Opacity="0.5"/>
                     <Button.Resources>
@@ -34,30 +37,31 @@
                     </Button.Resources>
                 </Button>
             </StackPanel>
-        </StackPanel>       
-            <DataGrid Style="{StaticResource text}" x:Name="GridProdaja" Margin="0 30" Grid.Row="1" AutoGenerateColumns="False">
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <DataGrid Style="{StaticResource text}" x:Name="GridProdaja" Margin="0 30">
                 <DataGrid.Columns>
                     <DataGridTextColumn 
-                        Binding="{Binding Product.Name}"
-                        Header="Наименование"/>                    
+            Binding="{Binding Product.Name}"
+            Header="Наименование"/>
                     <DataGridTextColumn 
-                        Binding="{Binding Client.Familia}"
-                        Header="Клиент"/>
+            Binding="{Binding Client.Familia}"
+            Header="Клиент"/>
                     <DataGridTextColumn 
-                        Binding="{Binding Colichestvo}"
-                        Header="Количество"/>
+            Binding="{Binding Colichestvo}"
+            Header="Количество"/>
                     <DataGridTextColumn 
-                        Binding="{Binding StatusOplata.Name}"
-                        Header="Статус оплаты"/>
+            Binding="{Binding StatusOplata.Name}"
+            Header="Статус оплаты"/>
                     <DataGridTextColumn 
-                        Binding="{Binding Typeoplata.Name}"
-                        Header="Тип оплаты"/>
+            Binding="{Binding Typeoplata.Name}"
+            Header="Тип оплаты"/>
                     <DataGridTextColumn 
-                        Binding="{Binding Stoimost, StringFormat={}{0:C2}}"
-                        Header="Стоимость"/>
+            Binding="{Binding Stoimost, StringFormat={}{0:C0}}"
+            Header="Стоимость"/>
                     <DataGridTextColumn
-                        Binding="{Binding Status.Name}"
-                        Header="Статус"/>
+            Binding="{Binding Status.Name}"
+            Header="Статус"/>
                     <DataGridTemplateColumn Width="30">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -68,6 +72,11 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-            </DataGrid>      
+            </DataGrid>
+        </StackPanel>            
+        <StackPanel Grid.Row="2" Background="{StaticResource Color}" Orientation="Horizontal">
+            <TextBlock Text="Сумма продаж:  " Style="{StaticResource norm}"/>
+            <TextBlock Style="{StaticResource norm}" Name="txbSumma"/>
+        </StackPanel>
     </Grid>
 </Page>

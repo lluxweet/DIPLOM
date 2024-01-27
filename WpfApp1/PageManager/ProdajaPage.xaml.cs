@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
@@ -33,6 +34,8 @@ namespace WpfApp1.PageManager
         private async void init()
         {
             _prodaja.Clear();
+            
+           
 
             var repository = new ProdajaRepository();
             var prodaja = await repository.GetAllAsync();
@@ -93,6 +96,8 @@ namespace WpfApp1.PageManager
             TxbNaideno.Text = prodaja.Count().ToString();
             TxbVsego.Text = prodaja.Count().ToString();
             _prodaja.AddRange(prodaja);
+            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString();
+            
         }
 
         private void txbPoisk_ChangedEvent(object sender, EventArgs e)

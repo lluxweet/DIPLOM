@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,13 +75,54 @@ namespace WpfApp1.Avtorizacia
 
         }     
 
-        private void BtbManager_Click(object sender, RoutedEventArgs e)
+        private async void BtbManager_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txbLogin.Text) && !string.IsNullOrEmpty(txbPassword.Password))
+            var repository = new UserRepository();
+            var User = await repository.GetAllAsync();
+
+            var repositoryRole = new RoleRepository();
+            var Role = await repositoryRole.GetAllAsync();
+           
+            string Login = txbLogin.Text;
+            string Password = txbPassword.Password;
+
+            UserEntity user = new UserEntity();
+            RoleEntity role = new RoleEntity();
+                                
+            try
             {
-                MessageBox.Show("Добро пожаловать!");               
+                var UserObj = User.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == txbPassword.Password);
+                if (UserObj == null)
+                {
+                    MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    user.idUser = UserObj.idRole;
+                    switch (UserObj.idRole)
+                    {
+                        case 1:
+                            MessageBox.Show("Здравствуйте, " + UserObj.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        break;
+                        case 2:
+                            MessageBox.Show("Здравствуйте, " + UserObj.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        break;
+                        default:
+                            MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);                                
+                        break;
+                    }
+                    if (UserObj.idRole == 1) { NavigationService.Navigate(new GlavnayaAdmin()); }
+                    if (UserObj.idRole == 2) { NavigationService.Navigate(new GlavnayaManager()); }
+                }
             }
-            NavigationService.Navigate(new GlavnayaManager());
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая работа приложения!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
+            }
+
+            
+            
 
         }      
         

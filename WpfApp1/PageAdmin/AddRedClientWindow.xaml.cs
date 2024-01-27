@@ -45,23 +45,32 @@ namespace WpfApp1.PageAdmin
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var repository = new ClientRepository();
-            entity.idOrganizacia = (cmbOrganiz.SelectedItem as OrganizaciaEntity).idOrganizacia;
-            entity.idPredprinimatel = (cmbPredprim.SelectedItem as PredprinimatelEntity).idPredprinimatel;
-            entity.Familia = TxbFamilia.Text;
-            entity.Name = TxbName.Text;
-            entity.Otchestvo = TxbOtchestvo.Text;
-            entity.Phone = TxbPhone.Text;
-            entity.Passport = TxbPassport.Text;
-            if (entity.idClient == 0)
+            try
             {
-                await repository.PostAsync(entity);
+                var repository = new ClientRepository();
+                entity.idOrganizacia = (cmbOrganiz.SelectedItem as OrganizaciaEntity).idOrganizacia;
+                entity.idPredprinimatel = (cmbPredprim.SelectedItem as PredprinimatelEntity).idPredprinimatel;
+                entity.Familia = TxbFamilia.Text;
+                entity.Name = TxbName.Text;
+                entity.Otchestvo = TxbOtchestvo.Text;
+                entity.Phone = TxbPhone.Text;
+                entity.Passport = TxbPassport.Text;
+                if (entity.idClient == 0)
+                {
+                    await repository.PostAsync(entity);
+                }
+                else
+                {
+                    await repository.PutAsync(entity);
+                }
+                Close();
             }
-            else
+            catch (Exception Ex)
             {
-                await repository.PutAsync(entity);
+                MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая работа приложения!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                throw;
             }
-            Close();
+            
         }
     }
 }

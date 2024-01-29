@@ -63,57 +63,43 @@ namespace WpfApp1.Avtorizacia
             {
                 textPassword.Visibility = Visibility.Visible;
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txbLogin.Text) && !string.IsNullOrEmpty(txbPassword.Password))
-            {
-                MessageBox.Show("Добро пожаловать!");                
-            }
-            NavigationService.Navigate(new GlavnayaAdmin());
-
-        }     
+        }            
 
         private async void BtbManager_Click(object sender, RoutedEventArgs e)
         {
             var repository = new UserRepository();
-            var User = await repository.GetAllAsync();
+            var users = await repository.GetAllAsync();
 
-            var repositoryRole = new RoleRepository();
-            var Role = await repositoryRole.GetAllAsync();
+            var repositoryRole = new RoleRepository();            
            
             string Login = txbLogin.Text;
-            string Password = txbPassword.Password;
-
-            UserEntity user = new UserEntity();
-            RoleEntity role = new RoleEntity();
-                                
+            string Password = txbPassword.Password;                       
+                                           
             try
             {
-                var UserObj = User.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == txbPassword.Password);
-                if (UserObj == null)
+                var user = users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == txbPassword.Password);
+                if (user == null)
                 {
                     MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
-                else
+                var role = await repositoryRole.GetAsync(user.idRole);
+                MessageBox.Show("Здравствуйте, " + user.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                switch (role.NameRole.ToLower().Trim())
                 {
-                    user.idUser = UserObj.idRole;
-                    switch (UserObj.idRole)
-                    {
-                        case 1:
-                            MessageBox.Show("Здравствуйте, " + UserObj.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    case "администратор":
+                        
+                        NavigationService.Navigate(new GlavnayaAdmin());
                         break;
-                        case 2:
-                            MessageBox.Show("Здравствуйте, " + UserObj.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    case "менеджер":
+                        
+                        NavigationService.Navigate(new GlavnayaManager());
                         break;
-                        default:
-                            MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);                                
-                        break;
-                    }
-                    if (UserObj.idRole == 1) { NavigationService.Navigate(new GlavnayaAdmin()); }
-                    if (UserObj.idRole == 2) { NavigationService.Navigate(new GlavnayaManager()); }
+                    default:
+                        MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);                                
+                    break;
                 }
+                                
             }
             catch (Exception Ex)
             {

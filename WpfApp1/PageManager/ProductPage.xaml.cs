@@ -30,7 +30,7 @@ namespace WpfApp1.PageManager
         {
             _product.Clear();
             var repository = new ProductReposirory();
-           var product = await repository.GetAllAsync();
+           var products = await repository.GetAllAsync();
 
             var repositoryCategoria = new CategoriaRepository();
             var categoria = await repositoryCategoria.GetAllAsync();
@@ -50,16 +50,17 @@ namespace WpfApp1.PageManager
             {
                 hashtable1.Add(item.idRazreshenie, item);
             }
-            foreach (var item in product)
+            foreach (var item in products)
             {
                 item.Categoria = (CategoriaEntity)hashtable[item.idСategory];
                 item.Razreshenie = (RazreshenieEntity)hashtable1[item.idRazreshenie];
             }
-            ProductGrid.ItemsSource = product;
+            ProductGrid.ItemsSource = products.OrderBy(x=> x.Date_delete);
 
-            TxbNaideno.Text = product.Count().ToString();
-            TxbVsego.Text = product.Count().ToString();
-            _product.AddRange(product);
+
+            TxbNaideno.Text = products.Count().ToString();
+            TxbVsego.Text = products.Count().ToString();
+            _product.AddRange(products);
         }       
 
         private void txbPoisk_ChangedEvent(object sender, EventArgs e)
@@ -90,8 +91,16 @@ namespace WpfApp1.PageManager
             AddRedProductWindow add = new AddRedProductWindow((sender as Button).DataContext as ProductEntity);
             add.IsVisibleChanged += Add_IsVisibleChanged;
             add.ShowDialog();
-        }
+        }               
 
-        
+        private void ProductGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            DataGridRow row = e.Row;
+            var product = row.DataContext as ProductEntity;
+            if (product.Date_delete != null)
+            {
+                row.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
     }
 }

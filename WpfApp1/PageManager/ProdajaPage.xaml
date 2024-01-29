@@ -24,9 +24,7 @@
                 <TextBlock Text="/" Style="{StaticResource normText}" Margin="0 10"/>
                 <TextBlock x:Name="TxbVsego" Width="50" Style="{StaticResource normText}" Margin="0 10"/>
 
-                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png" ChangedEvent="txbPoisk_ChangedEvent" x:Name="txbPoisk"/>
-
-                
+                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png" ChangedEvent="txbPoisk_ChangedEvent" x:Name="txbPoisk"/>                
                    
                 <Button Height="35" Width="35" Margin="20 0" Background="White" x:Name="BtnAdd" Click="BtnAdd_Click">
                     <Image Source="/images/zayavka.png" Width="20" Height="30" Opacity="0.5"/>

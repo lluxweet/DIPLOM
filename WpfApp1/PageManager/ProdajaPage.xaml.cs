@@ -33,10 +33,8 @@ namespace WpfApp1.PageManager
 
         private async void init()
         {
-            _prodaja.Clear();
-            
+            _prodaja.Clear();          
            
-
             var repository = new ProdajaRepository();
             var prodaja = await repository.GetAllAsync();
 
@@ -96,7 +94,7 @@ namespace WpfApp1.PageManager
             TxbNaideno.Text = prodaja.Count().ToString();
             TxbVsego.Text = prodaja.Count().ToString();
             _prodaja.AddRange(prodaja);
-            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString();
+            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString("C2");
             
         }
 
@@ -129,5 +127,7 @@ namespace WpfApp1.PageManager
             prodaja.IsVisibleChanged += Prodaja_IsVisibleChanged;
             prodaja.ShowDialog();
         }
+
+        
     }
 }

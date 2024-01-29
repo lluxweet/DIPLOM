@@ -34,7 +34,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1" Background="{StaticResource ColorWhite}">
-            <DataGrid Margin="0 30" Style="{StaticResource text}" x:Name="ProductGrid">
+            <DataGrid Margin="0 30" Style="{StaticResource text}" x:Name="ProductGrid" LoadingRow="ProductGrid_LoadingRow">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                     Binding ="{Binding Partia}"            

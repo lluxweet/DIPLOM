@@ -19,6 +19,20 @@ namespace WpfApp1.Repositories
             return response;
         } 
 
+        public async Task<UserEntity> LoginAsync(string Login, string Password)
+        {
+            UserEntity user = new UserEntity();
+            user.Login = Login;
+            user.Password = Password;
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.PostAsJsonAsync($"{ServerConstants.Host}/login", user);
+            if (!response.IsSuccessStatusCode )
+            {
+                throw new Exception();
+            }
+            return await response.Content.ReadFromJsonAsync<UserEntity>();
+        }
+
         public async Task<UserEntity> GetAsync(int id)
         {
             HttpClient httpClient = new HttpClient();

@@ -67,25 +67,16 @@ namespace WpfApp1.Avtorizacia
 
         private async void BtbManager_Click(object sender, RoutedEventArgs e)
         {
-            var repository = new UserRepository();
-            var users = await repository.GetAllAsync();
-
-            var repositoryRole = new RoleRepository();            
-           
+            var repository = new UserRepository();          
+                     
             string Login = txbLogin.Text;
             string Password = txbPassword.Password;                       
                                            
             try
             {
-                var user = users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == txbPassword.Password);
-                if (user == null)
-                {
-                    MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                var role = await repositoryRole.GetAsync(user.idRole);
+                var user = await repository.LoginAsync(Login,Password);               
                 MessageBox.Show("Здравствуйте, " + user.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                switch (role.NameRole.ToLower().Trim())
+                switch (user.Role.NameRole.ToLower().Trim())
                 {
                     case "администратор":
                         
@@ -98,13 +89,12 @@ namespace WpfApp1.Avtorizacia
                     default:
                         MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);                                
                     break;
-                }
-                                
+                }                                
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка" + Ex.Message.ToString() + "Критическая работа приложения!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-                throw;
+                MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
+                
             }
 
             

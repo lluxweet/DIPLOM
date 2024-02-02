@@ -17,10 +17,7 @@ using WpfApp1.Models;
 using WpfApp1.Repositories;
 
 namespace WpfApp1.PageAdmin
-{
-    /// <summary>
-    /// Логика взаимодействия для UserPage.xaml
-    /// </summary>
+{ 
     public partial class UserPage : Page
     {
         public UserPage()
@@ -31,21 +28,8 @@ namespace WpfApp1.PageAdmin
         private async void init()
         {
             var repository = new UserRepository();
-            var users = await repository.GetAllAsync();           
+            var users = await repository.GetAllAsync();
 
-            var repositoryRole = new RoleRepository();
-            var roles = await repositoryRole.GetAllAsync();
-
-            Hashtable hashtable = new Hashtable();
-
-            foreach (var item in roles)
-            {
-                hashtable.Add(item.idRole, item);
-            }
-            foreach (var item in users)
-            {
-                item.Role = (RoleEntity)hashtable[item.idRole];
-            }
             GridUser.ItemsSource = users;
 
         }

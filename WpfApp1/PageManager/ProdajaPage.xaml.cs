@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
 using WpfApp1.Repositories;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WpfApp1.PageManager
 {
@@ -94,8 +95,7 @@ namespace WpfApp1.PageManager
             TxbNaideno.Text = prodaja.Count().ToString();
             TxbVsego.Text = prodaja.Count().ToString();
             _prodaja.AddRange(prodaja);
-            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString("C2");
-            
+            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString("C2");            
         }
 
         private void txbPoisk_ChangedEvent(object sender, EventArgs e)
@@ -128,6 +128,39 @@ namespace WpfApp1.PageManager
             prodaja.ShowDialog();
         }
 
-        
+        private void ReplaceWordStub(string stubReplaceplace, string text, Word.Document wordDocument)
+        {
+            var range = wordDocument.Content;
+            range.Find.ClearFormatting();
+            range.Find.Execute(FindText: stubReplaceplace, ReplaceWith: text);
+        }
+
+        private void BtnOtchet_Click(object sender, RoutedEventArgs e)
+        {           
+            ProdajaEntity prodaja = (sender as Button).DataContext as ProdajaEntity;
+            ClientEntity client = (sender as Button).DataContext as ClientEntity;
+
+            var wordApp = new Word.Application();
+            Word.Document document = wordApp.Documents.Open(@"C:\Users\мыших\Desktop\отчет.docx");
+
+            ReplaceWordStub("{ID}", prodaja.id.ToString(), document);
+
+            ReplaceWordStub("{TOVAR}", prodaja.Product.Name.ToString(), document);
+            ReplaceWordStub("{PRICE}", prodaja.Product.Price.ToString(), document);
+           
+            ReplaceWordStub("{FAMILIA}", prodaja.Client.Familia.ToString(), document);
+            ReplaceWordStub("{NAME}", prodaja.Client.Name.ToString(), document);
+            ReplaceWordStub("{OTCHESTVO}", prodaja.Client.Otchestvo.ToString(), document);
+            ReplaceWordStub("{PASSPORT}", prodaja.Client.Passport.ToString(), document);
+
+            ReplaceWordStub("{FAMILIA1}", prodaja.Client.Familia.ToString(), document);
+            ReplaceWordStub("{NAME1}", prodaja.Client.Name.ToString(), document);
+            ReplaceWordStub("{OTCHESTVO1}", prodaja.Client.Otchestvo.ToString(), document);
+            ReplaceWordStub("{PASSPORT1}", prodaja.Client.Passport.ToString(), document);
+
+            ReplaceWordStub("{COLVO}", prodaja.Colichestvo.ToString(), document);            
+            ReplaceWordStub("{SUMMA}", prodaja.Stoimost.ToString(), document);
+            wordApp.Visible = true;            
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace WpfApp1.Models
         [JsonIgnore]
         public ProductEntity Product { get; set; }
         public ClientEntity Client { get; set; }
+        public PredprinimatelEntity Predprinimatel { get; set; }
         public StatusEntity Status { get; set; }
         public TypeoplataEntity Typeoplata { get; set; }
         public StatusoplataEntity StatusOplata { get; set; }

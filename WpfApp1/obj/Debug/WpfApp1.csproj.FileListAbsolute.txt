@@ -72,3 +72,6 @@ C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\AddRedProdajaW
 C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\AddRedProductWindow.baml
 C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\ProdajaPage.g.cs
 C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\ProdajaPage.baml
+C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\StockPage.g.cs
+C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\PageManager\StockPage.baml
+C:\Users\мыших\Desktop\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.ResolveComReference.cache

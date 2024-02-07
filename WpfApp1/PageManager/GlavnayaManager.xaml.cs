@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Avtorizacia;
 using WpfApp1.Repositories;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WpfApp1.PageManager
 {
@@ -42,6 +43,16 @@ namespace WpfApp1.PageManager
         private void BtnProdaja_Click(object sender, RoutedEventArgs e)
         {
             FrmMain.Navigate(new ProdajaPage());
+        }
+
+        private void BtnStock_Click(object sender, RoutedEventArgs e)
+        {
+            FrmMain.Navigate(new StockPage());
+        }
+
+        private void BtnOtshet_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

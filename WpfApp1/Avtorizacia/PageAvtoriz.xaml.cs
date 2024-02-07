@@ -1,28 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfApp1.Models;
 using WpfApp1.PageAdmin;
 using WpfApp1.PageManager;
 using WpfApp1.Repositories;
 
 namespace WpfApp1.Avtorizacia
 {
-    /// <summary>
-    /// Логика взаимодействия для PageAvtoriz.xaml
-    /// </summary>
     public partial class PageAvtoriz : Page
     {
         public PageAvtoriz()
@@ -69,12 +54,12 @@ namespace WpfApp1.Avtorizacia
         {
             var repository = new UserRepository();          
                      
-            string Login = txbLogin.Text;
-            string Password = txbPassword.Password;                       
+            string login = txbLogin.Text;
+            string password = txbPassword.Password;                       
                                            
             try
             {
-                var user = await repository.LoginAsync(Login,Password);               
+                var user = await repository.LoginAsync(login,password);               
                 MessageBox.Show("Здравствуйте, " + user.Name + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 switch (user.Role.NameRole.ToLower().Trim())
                 {
@@ -96,9 +81,6 @@ namespace WpfApp1.Avtorizacia
                 MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
                 
             }
-
-            
-            
 
         }      
         

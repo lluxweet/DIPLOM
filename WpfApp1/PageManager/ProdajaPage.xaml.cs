@@ -29,6 +29,7 @@ namespace WpfApp1.PageManager
         public ProdajaPage()
         {
             InitializeComponent();
+            GridProdaja.LoadingRow += GridProdaja_LoadingRow;
             init();
         }
 
@@ -95,7 +96,7 @@ namespace WpfApp1.PageManager
             TxbNaideno.Text = prodaja.Count().ToString();
             TxbVsego.Text = prodaja.Count().ToString();
             _prodaja.AddRange(prodaja);
-            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString("C2");            
+            txbSumma.Text = prodaja.Sum(x => x.Stoimost).ToString("C2");           
         }
 
         private void txbPoisk_ChangedEvent(object sender, EventArgs e)
@@ -161,6 +162,14 @@ namespace WpfApp1.PageManager
             ReplaceWordStub("{COLVO}", prodaja.Colichestvo.ToString(), document);            
             ReplaceWordStub("{SUMMA}", prodaja.Stoimost.ToString(), document);
             wordApp.Visible = true;            
+        }
+
+        private void GridProdaja_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (e.Row.GetIndex() % 2 == 1)
+            {
+                e.Row.Background = new SolidColorBrush(Colors.AliceBlue);
+            }
         }
     }
 }

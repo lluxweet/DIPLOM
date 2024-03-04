@@ -22,7 +22,7 @@
                 <TextBlock Text="/" Style="{StaticResource normText}" Margin="0 10"/>
                 <TextBlock x:Name="TxbVsego" Width="50" Style="{StaticResource normText}" Margin="0 10"/>
 
-                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png"/>
+                <Controls:IconTextBox TextHint="Найти..." Source="/images/lupa.png" ChangedEvent="IconTextBox_ChangedEvent" x:Name="txbPoisk"/>
 
                 <Button Width="30" Height="30" Margin="10 0" HorizontalAlignment="Right" Background="White" x:Name="AddButton" Click="AddButton_Click">
                     <Image Source="/images/dobav.png" Width="20" Height="30" Opacity="0.5"/>
@@ -36,7 +36,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Background="{StaticResource ColorWhite}">
-            <DataGrid Margin="0 30" x:Name="GridUser" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single" Style="{StaticResource text}" IsReadOnly="True">
+            <DataGrid Margin="0 30" x:Name="GridUser" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single" Style="{StaticResource text}" IsReadOnly="True" LoadingRow="GridUser_LoadingRow">
               <DataGrid.Columns>
                     <DataGridTextColumn
                 Binding ="{Binding Role.NameRole}"                        

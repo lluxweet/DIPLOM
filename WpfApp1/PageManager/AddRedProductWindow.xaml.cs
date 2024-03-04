@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,7 +23,7 @@ namespace WpfApp1.PageManager
         public AddRedProductWindow(ProductEntity product)
         {
             InitializeComponent();
-            entity = product;
+            entity = product;        
             init();
            
         }
@@ -33,6 +34,9 @@ namespace WpfApp1.PageManager
             var repositoryPred = new RazreshenieRepository();
             cmbRazreshinie.ItemsSource = await repositoryPred.GetAllAsync();
             DateDelet.SelectedDate = DateTime.Now;
+
+
+
             DataContext = entity;
         }
 
@@ -52,6 +56,7 @@ namespace WpfApp1.PageManager
             entity.Partia = Convert.ToInt32(TxbPartia.FinderText.Text);
             entity.Name = TxbName.FinderText.Text;
             entity.Price = Convert.ToInt32(TxbPrice.FinderText.Text);
+            
 
             entity.Date_delete = DateDelet.SelectedDate;
            

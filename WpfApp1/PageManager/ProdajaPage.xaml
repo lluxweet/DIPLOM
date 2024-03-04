@@ -37,13 +37,13 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <DataGrid Style="{StaticResource text}" x:Name="GridProdaja" Margin="0 30">
+            <DataGrid Style="{StaticResource text}" x:Name="GridProdaja" Margin="0 30" LoadingRow="GridProdaja_LoadingRow">
                 <DataGrid.Columns>
                     <DataGridTextColumn 
             Binding="{Binding Product.Name}"
             Header="Наименование"/>
                     <DataGridTextColumn 
-            Binding="{Binding Client.Familia}"
+            Binding="{Binding Client.FIO}"
             Header="Клиент"/>
                     <DataGridTextColumn 
             Binding="{Binding Colichestvo}"

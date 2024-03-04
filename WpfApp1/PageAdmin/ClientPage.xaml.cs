@@ -17,16 +17,14 @@ using WpfApp1.Models;
 using WpfApp1.Repositories;
 
 namespace WpfApp1.PageAdmin
-{
-    /// <summary>
-    /// Логика взаимодействия для ClientPage.xaml
-    /// </summary>
+{ 
     public partial class ClientPage : Page
     {
         private List<ClientEntity> _clients = new List<ClientEntity>();
         public ClientPage()
         {
             InitializeComponent();
+            GridClient.LoadingRow += GridClient_LoadingRow;
             init();            
         }
 
@@ -106,6 +104,14 @@ namespace WpfApp1.PageAdmin
             List<ClientEntity> clients = _clients.Where(x => x.Familia.ToLower().Contains(text)).ToList();
             GridClient.ItemsSource = clients;
             TxbNaideno.Text = clients.Count.ToString();
+        }
+
+        private void GridClient_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (e.Row.GetIndex() % 2 == 1)
+            {
+                e.Row.Background = new SolidColorBrush(Colors.AliceBlue);
+            }
         }
     }
 }

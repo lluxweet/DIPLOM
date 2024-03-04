@@ -17,21 +17,14 @@
         <StackPanel Grid.Row="0" Background="{StaticResource ColorWhite}">
             <Image Source="/images/logo.png" Width="100" HorizontalAlignment="Left" Margin="10"/>            
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="570">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="418">
             <Button Content="Товары" Style="{StaticResource navigation}" Height="32" x:Name="BtnProduct" Click="BtnProduct_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
-            </Button>
-            <Button Content="Склад" Style="{StaticResource navigation}" Height="32" x:Name="BtnStock" Click="BtnStock_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            </Button>            
             <Button Content="Продажи" Style="{StaticResource navigation}" Height="31" x:Name="BtnProdaja" Click="BtnProdaja_Click">
                 <Button.Resources>
                     <Style TargetType="Border">

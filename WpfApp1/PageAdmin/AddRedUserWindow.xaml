@@ -30,7 +30,7 @@
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>                   
-                    <ComboBox x:Name="cmbRole" Style="{StaticResource combobox}" SelectedValuePath="idRole" SelectedValue="{Binding idRole}" DisplayMemberPath="NameRole" />
+                    <ComboBox x:Name="cmbRole" Style="{StaticResource combobox}" SelectedValuePath="idRole" SelectedValue="{Binding idRole}" DisplayMemberPath="NameRole" SelectionChanged="cmbRole_SelectionChanged"/>
                 </Grid>
             </Border>            
             <TextBlock Text="Фамилия" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>

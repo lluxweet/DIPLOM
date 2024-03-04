@@ -34,7 +34,7 @@
             <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
                 <Grid>
                     <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
-                    <ComboBox x:Name="cmbClient" Style="{StaticResource combobox}" SelectedValuePath="idClient" SelectedValue="{Binding idClient}" DisplayMemberPath="Familia"/>
+                    <ComboBox x:Name="cmbClient" Style="{StaticResource combobox}" SelectedValuePath="idClient" SelectedValue="{Binding idClient}" DisplayMemberPath="FIO"/>
                 </Grid>
             </Border>
             <TextBlock Text="Количество товара:" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>

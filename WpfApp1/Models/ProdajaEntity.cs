@@ -24,8 +24,7 @@ namespace WpfApp1.Models
         public StatusEntity Status { get; set; }
         public TypeoplataEntity Typeoplata { get; set; }
         public StatusoplataEntity StatusOplata { get; set; }
-
-       
+        
         public int Stoimost => Convert.ToInt32(Product?.Price) * Convert.ToInt32(Colichestvo);
     }
 }

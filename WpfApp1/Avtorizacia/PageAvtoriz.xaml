@@ -25,7 +25,7 @@
 
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="Щелково Агрохим" Style="{StaticResource titleText}"/>
-            <TextBlock Text="предприятие со 145-летней историей, лидер российского агрохимического и семенного рынка, системообразующее предприятие России. Компания внедряет передовые технологии в сельском хозяйстве, производит уникальные средства защиты растений, возрождает отечественную селекцию и семеноводство, развивает животноводство." Style="{StaticResource normalText}" Opacity="0.8" Margin="20 30"/>
+            <TextBlock Text="предприятие со 145-летней историей, лидер российского агрохимического и семенного рынка, системообразующее предприятие России. Компания внедряет передовые технологии в сельском хозяйстве, производит уникальные средства защиты растений, возрождает отечественную селекцию и семеноводство, развивает животноводство" Style="{StaticResource normalText}" Opacity="0.8" Margin="20 30"/>
 
         </StackPanel>
 
@@ -61,15 +61,15 @@
                         <PasswordBox x:Name="txbPassword" Style="{StaticResource passwordbox}" PasswordChanged="txbPassword_PasswordChanged" Padding="6"/>
                     </Grid>
                 </Border>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20">
-                    <Button x:Name="BtbManager" Click="BtbManager_Click" Content="Войти" Style="{StaticResource mainbutton}" Width="158">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30 20 0 10">
+                    <Button x:Name="BtbManager" Click="BtbManager_Click" Content="ВОЙТИ" Style="{StaticResource mainbutton}" Width="158">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="?" ToolTip="Если вы забыли данные для входа, позвоните Администратору: +79968453026" Height="27" Width="27" Background="Transparent" Foreground="{StaticResource Color}" BorderBrush="{StaticResource Color}" BorderThickness="1" VerticalAlignment="Center" Opacity="0.4">
+                    <Button Content="?" ToolTip="Если вы забыли данные для входа, позвоните Администратору: +79968453026" Height="27" Width="27" Background="Transparent" Foreground="{StaticResource Color}" BorderBrush="{StaticResource Color}" BorderThickness="1" VerticalAlignment="Center" Opacity="0.4" Margin="10 0">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50"/>                                

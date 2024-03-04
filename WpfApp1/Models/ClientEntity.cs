@@ -23,5 +23,7 @@ namespace WpfApp1.Models
 
         [JsonIgnore]
         public PredprinimatelEntity Predprinimatel { get; set; }
+
+        public string FIO => Familia + " " + Name + " " + Otchestvo + "" + ", " + Passport + " ";
     }
 }

@@ -43,12 +43,7 @@ namespace WpfApp1.PageManager
         private void BtnProdaja_Click(object sender, RoutedEventArgs e)
         {
             FrmMain.Navigate(new ProdajaPage());
-        }
-
-        private void BtnStock_Click(object sender, RoutedEventArgs e)
-        {
-            FrmMain.Navigate(new StockPage());
-        }
+        }        
 
         private void BtnOtshet_Click(object sender, RoutedEventArgs e)
         {

@@ -20,9 +20,11 @@ namespace WpfApp1.PageAdmin
 { 
     public partial class UserPage : Page
     {
+        private List<UserEntity> _users = new List<UserEntity>();
         public UserPage()
         {
             InitializeComponent();
+            GridUser.LoadingRow += GridUser_LoadingRow;
             init();
         }
         private async void init()
@@ -30,8 +32,11 @@ namespace WpfApp1.PageAdmin
             var repository = new UserRepository();
             var users = await repository.GetAllAsync();
 
-            GridUser.ItemsSource = users;
+            TxbNaideno.Text = users.Count().ToString();
+            TxbVsego.Text = users.Count().ToString();
 
+            GridUser.ItemsSource = users;
+            _users.AddRange(users);
         }
         private void AddRedUserWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -68,6 +73,20 @@ namespace WpfApp1.PageAdmin
             }            
 
         }
-        
+        private void IconTextBox_ChangedEvent(object sender, EventArgs e)
+        {
+            string text = txbPoisk.Finder.Text.ToLower();
+            List<UserEntity> clients = _users.Where(x => x.Familia.ToLower().Contains(text)).ToList();
+            GridUser.ItemsSource = clients;
+            TxbNaideno.Text = clients.Count.ToString();
+        }
+
+        private void GridUser_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (e.Row.GetIndex() % 2 == 1)
+            {
+                e.Row.Background = new SolidColorBrush(Colors.AliceBlue);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,10 @@ namespace WpfApp1.PageAdmin
         {
             InitializeComponent();
             init();
+
+            //TxbPhone.PreviewTextInput += TxbPhone_PreviewTextInput;
+            TxbPhone.TextChanged += txbPhone_TextChanged;
+
             entity = clientEntity;
         }
 
@@ -71,6 +76,49 @@ namespace WpfApp1.PageAdmin
                 throw;
             }
             
+        }
+
+        private void textPhone_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TxbPhone.Focus();
+        }     
+
+        private void txbPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxbPhone.Text) && TxbPhone.Text.Length > 0)
+            {
+                textPhone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textPhone.Visibility = Visibility.Visible;
+            }
+
+            string phoneNumber = TxbPhone.Text;
+
+            // Удаляем все символы, кроме цифр
+            string numberOnly = "";
+            foreach (char ch in phoneNumber)
+            {
+                if (char.IsDigit(ch))
+                {
+                    numberOnly += ch;
+                }
+            }
+
+            // Проверяем и применяем маску
+            if (numberOnly.Length > 0)
+            {
+                string maskedNumber = string.Format("{0:(###) ###-####}", double.Parse(numberOnly));
+                TxbPhone.Text = maskedNumber;
+                TxbPhone.CaretIndex = maskedNumber.Length;
+            }
+        }
+
+        private void TxbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

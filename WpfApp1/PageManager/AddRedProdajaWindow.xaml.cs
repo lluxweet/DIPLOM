@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using WpfApp1.Models;
 using WpfApp1.Repositories;
 
@@ -24,7 +25,7 @@ namespace WpfApp1.PageManager
         public AddRedProdajaWindow(ProdajaEntity prodaja)
         {
             InitializeComponent();
-            entity = prodaja;
+            entity = prodaja;          
             init();
         }
         private async void init()

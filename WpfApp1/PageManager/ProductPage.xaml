@@ -47,10 +47,10 @@
                     Header ="Категория"/>
                     <DataGridTextColumn
                     Binding ="{Binding Razreshenie.Name}"
-                    Header ="Разрешение"/>                   
+                    Header ="Разрешение"/>                    
                     <DataGridTextColumn
                      Binding ="{Binding Price}"
-                     Header ="Цена"/>
+                     Header ="Цена/литр"/>
                     <DataGridTextColumn
                     Binding ="{Binding Date_delete, StringFormat={}{0:dd.MM.yy}}"
                     Header ="Снято с производства"/>

@@ -47,7 +47,17 @@
                 </Grid>
             </Border>
             <TextBlock Text="Телефон" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
-            <Controls:HintTextBox Hint="Телефон" x:Name="TxbPhone" Text="{Binding Phone}"/>
+            <Border BorderThickness="2" BorderBrush="{StaticResource Color}" CornerRadius="5" Width="390" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Grid.ColumnSpan="2" Background="White" CornerRadius="10"/>
+                    <TextBlock x:Name="textPhone"  Padding="6" VerticalAlignment="Center" Text="Телефон" Style="{StaticResource textHint}" MouseDown="textPhone_MouseDown"/>
+                    <TextBox x:Name="TxbPhone" Style="{StaticResource textbox}" Padding="6" Text="{Binding Phone}" TextChanged="txbPhone_TextChanged" PreviewTextInput="TxbPhone_PreviewTextInput"/>
+                </Grid>
+            </Border>
             <TextBlock Text="Паспорт" Style="{StaticResource norm}" Foreground="{StaticResource Color}"/>
             <Controls:HintTextBox Hint="Паспорт" x:Name="TxbPassport" Text="{Binding Passport}"/>
             <Button Content="Сохранить" Style="{StaticResource mainbutton}" Width="160" x:Name="BtnSave" Click="BtnSave_Click" Margin="0 10">

@@ -26,6 +26,8 @@ namespace WpfApp1.PageAdmin
             InitializeComponent();
             init();
             entity = user;
+           
+            cmbRole.SelectionChanged += cmbRole_SelectionChanged;
                       
         }
         private async void init()
@@ -61,5 +63,24 @@ namespace WpfApp1.PageAdmin
             }
             Close();
         }
+
+        private void cmbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserEntity user = new UserEntity();
+            if (user.idUser == 1)
+            {
+                cmbRole.SelectionChanged -= cmbRole_SelectionChanged; // Удаляем обработчик события, чтобы предотвратить изменение значения
+
+                // Возвращаем предыдущее выбранное значение, чтобы ComboBox оставался неизменным
+                if (cmbRole.Items.Count > 1)
+                {
+                    cmbRole.SelectedIndex = 1; // Можно выбрать любое другое доступное значение
+                }
+
+                cmbRole.SelectionChanged += cmbRole_SelectionChanged; // Восстанавливаем обработчик события
+            }
+
+        }
+        
     }
 }

@@ -20,10 +20,12 @@ namespace WpfApp1.PageManager
 {   
     public partial class ProductPage : Page
     {
-        private List<ProductEntity> _product = new List<ProductEntity>();        
+        private List<ProductEntity> _product = new List<ProductEntity>();       
+        
         public ProductPage()
         {
             InitializeComponent();
+            ProductGrid.LoadingRow += ProductGrid_LoadingRow;
             init();
         }
         private async void init()
@@ -56,10 +58,10 @@ namespace WpfApp1.PageManager
                 item.Razreshenie = (RazreshenieEntity)hashtable1[item.idRazreshenie];
             }
             ProductGrid.ItemsSource = products.OrderBy(x=> x.Date_delete);
-
-
+            
             TxbNaideno.Text = products.Count().ToString();
             TxbVsego.Text = products.Count().ToString();
+                      
             _product.AddRange(products);
         }       
 
@@ -99,8 +101,14 @@ namespace WpfApp1.PageManager
             var product = row.DataContext as ProductEntity;
             if (product.Date_delete != null)
             {
-                row.Foreground = new SolidColorBrush(Colors.Gray);
+                row.Foreground = new SolidColorBrush(Colors.Gray);                
             }
-        }
+
+            if (e.Row.GetIndex() % 2 == 1)
+            {
+                e.Row.Background = new SolidColorBrush(Colors.AliceBlue);
+            }
+        }        
+        
     }
 }

@@ -7,8 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClientPage">
+    
+    
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="450"/>
@@ -36,7 +39,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Background="{StaticResource ColorWhite}">
-            <DataGrid Margin="0 30" x:Name="GridClient" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single" Style="{StaticResource text}">
+            <DataGrid Margin="0 30" Style="{StaticResource text}" x:Name="GridClient" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single" LoadingRow="GridClient_LoadingRow">
                 <DataGrid.Columns>                    
                     <DataGridTextColumn
             Binding ="{Binding Familia}"

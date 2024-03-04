@@ -141,9 +141,6 @@
     <Compile Include="PageManager\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageManager\StockPage.xaml.cs">
-      <DependentUpon>StockPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\CategoriaRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\OrganizaciaRepository.cs" />
@@ -221,10 +218,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageManager\ProductPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PageManager\StockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
